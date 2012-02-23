@@ -1,0 +1,2 @@
+search_seq.pl takes in a zipped fastq file and counts the number of
+reads containing the given sequence
