@@ -1,8 +1,8 @@
 #!/usr/bin/env perl
 
 ################################################################
-#take in a fastq file and count the number of reads containing 
-#the given sequence. 
+#takes in a zipped fastq file and counts the number of reads
+#containing the given sequence. 
 ################################################################
 
 use strict;
@@ -17,11 +17,11 @@ GetOptions ( 's|sequence=s' => \$search_seq,
 );
 
 if (!$search_seq){
-    die "Please provide the searching sequence after '-s'.\n";
+    die "Please provide the searching sequence: search_seq.pl -s \n";
 }
 
-$fastq_file =#'/lustre/scratch103/pathogen/pathpipe/eukaryotes/seq-pipelines/Leishmania/donovani_donovani/TRACKING/195/BPK031A1/SLX/BPK031A1_441992/5151_8#6/5151_8#6_2.fastq.gz' ;
-'t/test.fastq.gz';
+$fastq_file ='/lustre/scratch103/pathogen/pathpipe/eukaryotes/seq-pipelines/Leishmania/donovani_donovani/TRACKING/195/BPK031A1/SLX/BPK031A1_441992/5151_8#6/5151_8#6_2.fastq.gz' ;
+#'test.fastq.gz';
 
 
 my $reads_counter_object = ReadsCounter->new(fastq_file => $fastq_file,
