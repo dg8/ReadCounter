@@ -9,9 +9,10 @@ use strict;
 use warnings;
 use Getopt::Long;
 use ReadsCounter;
+use Bio::SeqIO::fastq;
 
 my ($search_seq, $fastq_file);
-$fastq_file = 'test.fastq';
+#$fastq_file = 'test.fastq';
 GetOptions ( 's|sequence=s' => \$search_seq,
 	    # 'f|fastq-file=s' => \$fastq_file,
 );
@@ -21,17 +22,17 @@ if (!$search_seq){
 }
 
 $fastq_file ='/lustre/scratch103/pathogen/pathpipe/eukaryotes/seq-pipelines/Leishmania/donovani_donovani/TRACKING/195/BPK031A1/SLX/BPK031A1_441992/5151_8#6/5151_8#6_2.fastq.gz' ;
-#'test.fastq.gz';
+
+my $output_file = 'test/script_output';
 
 
-my $reads_counter_object = ReadsCounter->new(fastq_file => $fastq_file,
+my $reads_counter_obj = ReadsCounter->new(fastq_file => $fastq_file,
 					     search_seq => $search_seq,
+					     output_file => $output_file,
     );
 
-my $counter=$reads_counter_object->reads_counter;
+my $counter=$reads_counter_obj->reads_counter;
 
 print "Found $counter ".(($counter == 1 )?"read":"reads").
 " containing the sequence '$search_seq'.\n";
-
-
 
